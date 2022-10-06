@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Going to Vacation</title>
+    </head>
+<body>
+    <h1>Praneeth selects a Vacation</h1>
+    <form>
+        <div class = "container">
+            <input type ="checkbox" id ="byAir" name ="true" value="True">
+            <label for="true">Travel by Air</label>
+        </div>
+        <div class = "container">
+            <input type="checkbox" id="byDomestic" name="true" value="True">
+            <label for="true">Domestic</label>
+        </div>
+        <div class = "container">
+            <input type="checkbox" id="byResort" name="false" value="False">
+            <label for="false">Resort</label>
+        </div>
+    </form>
+    <button type = "button" onclick="selectVacation()">
+        Select a vacation
+    </button>
+    <script>
+        var my_Vacation = {};
+        function selectVacation()
+        {
+            my_Vacation = {};
+            let by_Air = document.getElementById("byAir").checked;
+            let by_Domestic = document.getElementById("byDomestic").checked;
+            let by_Resort = document.getElementById("byResort").checked;
+            if(by_Air)
+            {
+                my_Vacation.byAir = true;
+            }
+            else
+            {
+                my_Vacation.byAir = false;
+            }
+            if(by_Domestic)
+            {
+                my_Vacation.byDomestic = true;
+            }
+            else
+            {
+                my_Vacation.byDomestic = false;
+            }
+            if(by_Resort)
+            {
+                my_Vacation.byResort = true;
+            }
+            else
+            {
+                my_Vacation.byResort = false;
+            }
+            document.getElementById("result").innerHTML = JSON.stringify(my_Vacation)
+        }
+    </script>
+    <form>
+        <div class="container">
+            <label for="city">Enter a city</label>
+            <input type="text" id="city" name="vacationname" value="city">
+        </div>
+        <div class="container">
+            <label for="price">Enter price</label>
+            <input type="text" id="price" name="vacationprice" value="0">
+        </div>
+        <button type = "button" onclick="updateVacation()">
+            Update the vacation
+        </button>
+        <p id="result">This text will be replaced with the updated vacation</p>
+    </form>
+    <script>
+        function updateVacation()
+        {
+            city = document.getElementById("city").value;
+            price = document.getElementById("price").value;
+            my_Vacation["City"] = city;
+            my_Vacation["Price"] = price;
+            document.getElementById("result").innerHTML = JSON.stringify(my_Vacation)
+        }
+    </script>
+</body>
+</html>
